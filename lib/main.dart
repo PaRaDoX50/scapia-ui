@@ -7,6 +7,7 @@ import 'package:ui_scapia/data/repositories/journey_repository.dart';
 import 'package:ui_scapia/data/repositories/repository.dart';
 import 'package:ui_scapia/ui/screens/cancellation_window/cancellation_window.dart';
 import 'package:ui_scapia/ui/screens/home/home_screen.dart';
+import 'package:ui_scapia/ui/screens/journey/journey_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,6 +50,10 @@ class _MyAppState extends State<MyApp> {
                         ..add(CancellationDetailFetchEvent()),
                   child: const CancellationWindowScreen(),
                 );
+              });
+            } else if (settings.name == JourneyScreen.routeName) {
+              return MaterialPageRoute(builder: (context) {
+                return const JourneyScreen();
               });
             }
 
