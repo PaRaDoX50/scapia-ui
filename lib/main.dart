@@ -35,7 +35,10 @@ class _MyAppState extends State<MyApp> {
       create: (context) => repository,
       child: MaterialApp(
           title: 'Flutter Demo',
-          theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'visby'),
+          theme: ThemeData(
+              primarySwatch: Colors.blue,
+              fontFamily: 'visby',
+              primaryColor: const Color(0xffca3b04).withOpacity(.9)),
           home: const HomeScreen(),
           onGenerateRoute: (settings) {
             if (settings.name == CancellationWindowScreen.routeName) {
