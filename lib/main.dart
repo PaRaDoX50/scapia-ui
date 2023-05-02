@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ui_scapia/blocs/cancellation_detail_bloc/cancellation_detail_bloc.dart';
+import 'package:ui_scapia/blocs/journey_detail/journey_detail_bloc.dart';
 import 'package:ui_scapia/data/api/api_methods.dart';
 import 'package:ui_scapia/data/api/api_methods_impl.dart';
 import 'package:ui_scapia/data/repositories/journey_repository.dart';
@@ -53,11 +54,16 @@ class _MyAppState extends State<MyApp> {
               });
             } else if (settings.name == JourneyScreen.routeName) {
               return MaterialPageRoute(builder: (context) {
-                return const JourneyScreen();
+                return BlocProvider<JourneyDetailBloc>(
+                  create: (context) => JourneyDetailBloc(repository: repository)
+                    ..add(JourneyDetailFetchEvent()),
+                  child: const JourneyScreen(),
+                );
               });
             }
 
             assert(true, 'Need to implement ${settings.name}');
+            return null;
           }),
     );
   }

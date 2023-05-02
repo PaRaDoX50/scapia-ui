@@ -7,8 +7,8 @@ class JourneyItem {
   final JourneyType type;
   final AirportDetail? origin;
   final AirportDetail? destination;
-  final DateTime? destinationArrivalTime;
-  final DateTime? originTime;
+  final DateTime destinationArrivalTime;
+  final DateTime originTime;
   final Duration duration;
   final FlightDetail? flight;
 
@@ -16,8 +16,8 @@ class JourneyItem {
     required this.type,
     this.origin,
     this.destination,
-    this.destinationArrivalTime,
-    this.originTime,
+    required this.destinationArrivalTime,
+    required this.originTime,
     required this.duration,
     this.flight,
   });
@@ -32,11 +32,8 @@ class JourneyItem {
       origin: entity.origin != null
           ? AirportDetail.fromEntity(entity.origin!)
           : null,
-      destinationArrivalTime: entity.destinationArrivalTime != null
-          ? DateTime.parse(entity.destinationArrivalTime!)
-          : null,
-      originTime:
-          entity.originTime != null ? DateTime.parse(entity.originTime!) : null,
+      destinationArrivalTime: DateTime.parse(entity.destinationArrivalTime),
+      originTime: DateTime.parse(entity.originTime),
       flight: entity.flight != null
           ? FlightDetail.fromEntity(entity.flight!)
           : null,
@@ -50,9 +47,9 @@ class JourneyItemEntity {
   final AirportDetailEntity? origin;
   final AirportDetailEntity? destination;
   @JsonKey(name: 'destination_arrival_time')
-  final String? destinationArrivalTime;
+  final String destinationArrivalTime;
   @JsonKey(name: 'origin_time')
-  final String? originTime;
+  final String originTime;
   final int duration;
   final FlightDetailEntity? flight;
 
@@ -60,8 +57,8 @@ class JourneyItemEntity {
       {required this.type,
       this.origin,
       this.destination,
-      this.destinationArrivalTime,
-      this.originTime,
+      required this.destinationArrivalTime,
+      required this.originTime,
       required this.duration,
       this.flight});
 

@@ -17,8 +17,8 @@ JourneyItemEntity _$JourneyItemEntityFromJson(Map<String, dynamic> json) =>
           ? null
           : AirportDetailEntity.fromJson(
               json['destination'] as Map<String, dynamic>),
-      destinationArrivalTime: json['destination_arrival_time'] as String?,
-      originTime: json['origin_time'] as String?,
+      destinationArrivalTime: json['destination_arrival_time'] as String,
+      originTime: json['origin_time'] as String,
       duration: json['duration'] as int,
       flight: json['flight'] == null
           ? null

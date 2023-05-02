@@ -29,7 +29,11 @@ class TimelineTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(child: prevLine),
-                DotContainer(isLastTile: isLastTile),
+                DotContainer(
+                  isLastTile: isLastTile,
+                  color: Colors.green,
+                  borderColor: Colors.green.shade100,
+                ),
                 Expanded(child: nextLine),
               ],
             ),

@@ -14,7 +14,13 @@ class GreenLineContainer extends StatelessWidget {
 
 class DotContainer extends StatelessWidget {
   final bool isLastTile;
-  const DotContainer({super.key, required this.isLastTile});
+  final Color color;
+  final Color borderColor;
+  const DotContainer(
+      {super.key,
+      required this.isLastTile,
+      required this.color,
+      required this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +28,8 @@ class DotContainer extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-              color: isLastTile ? Colors.red.shade100 : Colors.green.shade100,
-              width: 4),
-          color: isLastTile ? Colors.red : Colors.green),
+              color: isLastTile ? Colors.red.shade100 : borderColor, width: 4),
+          color: isLastTile ? Colors.red : color),
       width: 18,
       height: 18,
     );
